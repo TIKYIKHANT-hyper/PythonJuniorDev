@@ -30,14 +30,32 @@ class company:
         return dt.datetime.now()
 
 class companybranch(company):
-    def __init__(self,subid,subname):
+    def __init__(self,id , name, service,numberofemployee,subid,subname):
+        super().__init__(id , name, service,numberofemployee)
         self.subid = subid
         self.subname = subname
     def showbranch(self):
         return f"{self.subid} {self.subname} under {self.name}"
 
+class developer(company):
+    def __init__(self, id , name, service,numberofemployee,devid, firstname, lastname, programming_language):
+        super().__init__(id , name, service,numberofemployee)
+        self.devid = devid
+        self.firstname = firstname
+        self.lastname = lastname
+        self.programming_languague = programming_language
+
+    def fullname(self):
+        return f"{self.firstname} {self.lastname}"
+
+    def developerid(self):
+        return f"{self.devid}"
+
+    def fav_lang(self):
+        return self.programming_languague
+
 test1 = company(1,"Amogus Flim","Fliming",6979)
-test2 = companybranch(1,"Ronaldo")
+test2 = companybranch(1,"Amogus Flim","Fliming",6979,1,"Ronaldo")
 
 print(test2.registerdate())
 print(test1.service)
