@@ -54,10 +54,31 @@ class developer(company):
     def fav_lang(self):
         return self.programming_languague
 
+class Manager(company):
+    def __init__(self,id , name , service, numberofemployee, field , firstname, lastname, employee = None):
+        super().__init__(id, name, service, numberofemployee)
+        self.field = field
+        self.firstname = firstname
+        self.lastname = lastname
+        if employee is None:
+            self.employee = []
+        else:
+            self.employee = employee
+
+    def addemp(self, emp):
+        if emp not in self.employee:
+            self.employee.append(emp)
+
+    def removeemp(self, emp):
+        if emp in self.employee:
+            self.employee.remove(emp)
+
+    def print_emps(self):
+        for emp in self.employee:
+            print(emp)
+
 test1 = company(1,"Amogus Flim","Fliming",6979)
 test2 = companybranch(1,"Amogus Flim","Fliming",6979,1,"Ronaldo")
+test3 = Manager(2,"Sus","SUSSY",103040,"sale","John","Dow",["Harry","Lisp"])
 
-print(test2.registerdate())
-print(test1.service)
-print(help(company))
-print(help(companybranch))
+print(test3.print_emps())
