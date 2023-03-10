@@ -22,3 +22,8 @@ class linked_lists:
             current = current.next_node
 
         return count
+
+    def add(self,data):
+        new_node = node(data)
+        new_node.next_node = self.header
+        self.header = new_node
