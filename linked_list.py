@@ -43,3 +43,13 @@ class linked_lists:
             current = current.next_node
 
         return "-> ".join(linklist)
+
+    def search(self , id):
+        current = self.header
+        while current:
+            if current.data == id:
+                return current
+            else:
+                current = current.next_node
+
+        return None
