@@ -17,7 +17,7 @@ class linked_lists:
     def size(self):
         count = 0
         current = self.header
-        while current != None:
+        while current:
             count += 1
             current = current.next_node
 
@@ -27,3 +27,19 @@ class linked_lists:
         new_node = node(data)
         new_node.next_node = self.header
         self.header = new_node
+
+    def __repr__(self):
+        linklist = []
+        current = self.header
+
+        while current:
+            if current == self.header:
+                linklist.append(f"[Head:{current.data}]")
+            elif current.next_node ==  None:
+                linklist.append(f"[Tail:{current.data}]")
+            else:
+                linklist.append(f"{current.data}")
+
+            current = current.next_node
+
+        return "-> ".join(linklist)
