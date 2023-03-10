@@ -1,27 +1,37 @@
-class node:
-    def __init__(self, id, next):
+class Node:
+    def __init__(self,id,next = None):
         self.id = id
         self.next = next
 
     def __repr__(self):
-        return f"Object code as {self.id} indicates {self.next}"
-class structure:
-    def __init__(self):
-        self.header = None
+        return f"object with ID :{self.id} indicating next {self.next}\n"
 
-    def size(self):
-        count = 0
-        while self.header != None:
-            count += 1
-        return count
-    def adder(self,data):
-        new_node = node(data,self.header)
-        self.header = new_node
+class linked_lists:
+    def __init__(self , head):
+        self.head = head
+        self.__count = 0
 
-testcase1 = structure()
-data1 = node(1,None)
-testcase1.header = data1
-data2 = node(2,None)
-testcase1.adder(data2)
-print(data1)
-print(testcase1)
+    def add(self , id):
+        current = self.head
+        newNode = Node(id,self.head)
+        self.head = current
+        self.__count += 1
+
+    def __len__(self):
+        return self.__count+1
+
+    def search(self , id):
+        current = self.head
+        while current:
+            if current.id == id:
+                return current
+            else:
+                current = current.next
+        return None
+
+data = Node(1)
+storage1 = linked_lists(data)
+storage1.add(2)
+storage1.add(3)
+n = storage1.search(3)
+print(n)
