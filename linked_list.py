@@ -70,3 +70,19 @@ class linked_lists:
             current = current.next_node
             current_index += 1
         raise IndexError("index out of range")
+
+    def deletedata(self, data):
+        found = False
+        previous = None
+        current = self.header
+        while current and not found:
+            if current.data == data and current == self.header:
+                found = True
+                self.header = current.next_node
+            elif current.data == data:
+                found = True
+                previous.next_node = current.next_node
+            else:
+                previous = current
+                current = current.next_node
+        return found
