@@ -86,3 +86,14 @@ class linked_lists:
                 previous = current
                 current = current.next_node
         return found
+
+    def nodeatIndex(self , index):
+        if index == 0:
+            return self.header
+        else:
+            current = self.header
+            position = 0
+            while  position < index:
+                current = current.next_node
+                position += 1
+            return current
