@@ -3,8 +3,11 @@ import time
 
 start_time = time.time()
 def bogo_sort(arr):
+    attempts = 0
     while not is_sorted(arr):
         random.shuffle(arr)
+        attempts += 1
+    print(attempts)
     return arr
 
 
