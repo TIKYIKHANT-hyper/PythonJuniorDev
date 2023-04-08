@@ -1,5 +1,6 @@
 def timeAdd(start,end,day=""):
     date_count = 0
+    day_passed = 0
     if day != "" and day != None:
         days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
         for date in days:
@@ -40,8 +41,10 @@ def timeAdd(start,end,day=""):
                 if day != "" and day != None:
                     if date_count == len(days):
                         date_count = 0
+                        day_passed += 1
                     elif date_count < len(days):
                         date_count += 1
+                        day_passed += 1
                         if date_count == len(days):
                             date_count = 0
             elif period == "am":
@@ -51,16 +54,23 @@ def timeAdd(start,end,day=""):
                 if day != "" and day != None:
                     if date_count == len(days):
                         date_count = 0
+                        day_passed += 1
                     elif date_count < len(days):
                         date_count += 1
+                        day_passed += 1
                         if date_count == len(days):
                             date_count = 0
             elif period == "AM":
                 period = "PM"
 
         if day != None and day != "":
-            print(f"{res_hr}:{res_min} {period} {days[date_count]}")
+            if day_passed == 0:
+                print(f"{res_hr}:{res_min} {period} {days[date_count]}")
+            elif day_passed == 1:
+                print(f"{res_hr}:{res_min} {period} {days[date_count]} (next day)")
+            else:
+                print(f"{res_hr}:{res_min} {period} {days[date_count]} ({day_passed} days later)")
         else:
             print(f"{res_hr}:{res_min} {period}\n")
 
-timeAdd("12:30 PM","50:40","SunDay")
+timeAdd("12:30 AM","2:40","SunDay")
