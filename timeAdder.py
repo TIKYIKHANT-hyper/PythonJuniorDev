@@ -67,9 +67,9 @@ def timeAdd(start,end,day=""):
             if day_passed == 0:
                 print(f"{res_hr}:{res_min} {period} {days[date_count]}")
             elif day_passed == 1:
-                print(f"{res_hr}:{res_min} {period} {days[date_count]} (next day)")
+                print(f"{res_hr}:{res_min} {period} {days[date_count]} (next day)\n")
             else:
-                print(f"{res_hr}:{res_min} {period} {days[date_count]} ({day_passed} days later)")
+                print(f"{res_hr}:{res_min} {period} {days[date_count]} ({day_passed} days later)\n")
         else:
             print(f"{res_hr}:{res_min} {period}\n")
 
