@@ -1,4 +1,4 @@
-def timeAdd(start,end,day=""):
+def add_time(start,end,day=""):
     date_count = 0
     day_passed = 0
     if day != "" and day != None:
@@ -29,7 +29,7 @@ def timeAdd(start,end,day=""):
         """
         if res_min_len == 1:
             res_min = f"0{res_min}"
-        print(f"{res_hr}:{res_min}\n")
+        return f"{res_hr}:{res_min}\n"
     elif "AM" in start.upper() or "PM" in start.upper():
         new_list = (start.strip()).split(" ")
         new_str = new_list[0].split(":")
@@ -100,12 +100,13 @@ def timeAdd(start,end,day=""):
             res_min = f"0{res_min}"
         if day != None and day != "":
             if day_passed == 0:
-                print(f"{res_hr}:{res_min} {period} {days[date_count]}")
+                return f"{res_hr}:{res_min} {period} {days[date_count]}"
             elif day_passed == 1:
-                print(f"{res_hr}:{res_min} {period} {days[date_count]} (next day)\n")
+                return f"{res_hr}:{res_min} {period} {days[date_count]} (next day)\n"
             else:
-                print(f"{res_hr}:{res_min} {period} {days[date_count]} ({day_passed} days later)\n")
+                return f"{res_hr}:{res_min} {period} {days[date_count]} ({day_passed} days later)\n"
         else:
-            print(f"{res_hr}:{res_min} {period}\n")
+            return f"{res_hr}:{res_min} {period}\n"
 
-timeAdd("11:59 AM","24:05","saturDay")
+test1 = add_time("11:59 AM","24:05","saturDay")
+print(add_time("11:06 PM", "2:02"))
