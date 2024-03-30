@@ -1,32 +1,36 @@
-x = 3
-a = []
-i = 0
-z = 0
-while z < 1000:
-    i += 1
-    z = i * x
-    a.append(z)
-a.pop()
-print(a)
+from selenium import webdriver
+import time
+from selenium.webdriver.common.by import By
 
-y = 5
-b = []
-c = 0
-d = 0
+driver = webdriver.Chrome()
 
-while d < 1000:
-    c += 1
-    d = c * y
-    b.append(d)
-b.pop()
-print(b)
+def login(username, password):
+    driver.refresh()
+    driver.get("https://internet.msfu.ru/login?")
+    time.sleep(2)  # Wait for the page to load
 
-finaltest = set(a + b)
-print(finaltest)
-finalvalue = 0
-copylist = list(finaltest)
-for i in range(len(finaltest)):
-    finalvalue += (copylist[i])
+    # Find username and password input fields and submit button
+    username_input = driver.find_element(By.NAME, "username")
+    password_input = driver.find_element(By.NAME, "password")
+    submit_button = driver.find_element(By.XPATH, "//input[@type='submit']")
 
-print(finalvalue)
-print("New")
+    # Enter login credentials and submit the form
+    username_input.send_keys(username)
+    password_input.send_keys(password)
+    submit_button.click()
+
+    time.sleep(5)
+
+# Call the login function
+login('mop', "18301919")
+
+# to keep the session alive
+while True:
+    current_url = driver.current_url
+    if current_url != "https://internet.msfu.ru/login?" and current_url != "https://internet.msfu.ru/login":
+        print("Session is active")
+    else:
+        print("Session expired. Re-login required.")
+        login('mop', "18301919")  # Re-login if session expired
+
+    time.sleep(50)  # Check session status every 5 minutes
